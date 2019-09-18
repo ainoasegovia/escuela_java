@@ -1,18 +1,15 @@
 package ejemplosjava;
 /**
- * @author alumno
+ * @author Ainoa
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        System.out.println("COCHE 1");
         
         Coche miCoche;
         
-        miCoche = new Coche("Kia",true); // La instanciacion se hace con new
+        //miCoche = new Coche("Kia",TipoCarburante.DIESEL,TipoColor.VERDE); // La instanciacion se hace con new
+        miCoche = new Coche("Kia",TipoCarburante.GASOLINA,"Rojo"); // La instanciacion se hace con new
 
         miCoche.echarCarburante(30); // Empezamos con medio deposito
         
@@ -23,7 +20,6 @@ public class Main {
         /* -------------------------------------------------------------------*/
         
         System.out.println("");
-        System.out.println("COCHE 2");
         
         Coche otroCoche = miCoche; // new Coche()
         
