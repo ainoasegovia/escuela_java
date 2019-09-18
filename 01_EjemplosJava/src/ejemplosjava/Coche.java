@@ -13,7 +13,6 @@ public class Coche { // hereda de Object
 	private TipoColor color = TipoColor.ROJO;
 	private final TipoCarburante carburante;
 
-    
     public Coche(String marca, TipoCarburante carburante, TipoColor color) {
         this.numRuedas = 4;
         this.marca = marca;
@@ -35,19 +34,7 @@ public class Coche { // hereda de Object
 		}*/
 		this.carburante = carburante; 
     }
-    
-    public double getNivelDep() {
-        return nivDeposito;
-    }
 
-    public byte getNumRuedas() {
-        return numRuedas;
-    }
-
-	public void setColor(TipoColor color) {
-		this.color = color;
-	}
-    
     public void echarCarburante(double cantidad) {
         if (cantidad > 0)
             this.nivDeposito += cantidad;
@@ -57,7 +44,9 @@ public class Coche { // hereda de Object
     }
     
     public void acelerar() {
-        if (arrancado)  nivDeposito -= 0.1;
+        if (arrancado)  
+			nivDeposito -= 0.1;
+			explosionCilindro();
     }
     
     public void vaciarDeposito() {
@@ -73,7 +62,19 @@ public class Coche { // hereda de Object
     public void mostrar() {
         System.out.println(this.toString()); 
     }
+  
+    public double getNivelDep() {
+        return nivDeposito;
+    }
 
+    public byte getNumRuedas() {
+        return numRuedas;
+    }
+
+	public void setColor(TipoColor color) {
+		this.color = color;
+	}
+	
     public String getMarca() {
         return marca;
     }
@@ -93,5 +94,12 @@ public class Coche { // hereda de Object
     public void setArrancado(boolean arrancado) {
         this.arrancado = arrancado;
     }
+	
+	protected void explosionCilindro(){
+		System.out.println("Motor funcionando");
+	}
     
+	protected void setNivDeposito(double nuevoNiv){
+		this.nivDeposito = nuevoNiv;
+	}
 }

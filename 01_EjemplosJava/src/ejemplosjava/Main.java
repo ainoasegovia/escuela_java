@@ -1,11 +1,16 @@
 package ejemplosjava;
+
+import ClasesJava.ProbandoString;
+
 /**
  * @author Ainoa
  */
 public class Main {
 
     public static void main(String[] args) {
-        
+		ProbandoString.tratarCadenas();
+	}
+	public static void mainCoches(String[] args) {
         Coche miCoche;
         
         //miCoche = new Coche("Kia",TipoCarburante.DIESEL,TipoColor.VERDE); // La instanciacion se hace con new
@@ -36,5 +41,34 @@ public class Main {
 			miCoche.acelerar();
 		
 		miCoche.mostrar();
+		
+		/* -------------------------------------------------------------------*/
+		
+		CocheRally miSupra = new CocheRally("SKODA", TipoCarburante.DIESEL, TipoColor.AZUL, 3.5f);
+		miSupra.echarCarburante(50);
+		miSupra.setArrancado(true);
+		miSupra.acelerar();
+		miSupra.acelerar();
+		miSupra.derrapar();
+		//miSupra.setNivDeposito(4); // SOLO DENTRO DEL PAQUETE
+		//miSupra.explosionCilindro();
+		miSupra.mostrar();
+	
+		Coche supraNormal = miSupra; // CONVERSION IMPLICITA
+		supraNormal.explosionCilindro();
+		//supraNormal.derrapar(); // NO SE PUEDE PORQUE EL COCHE NORMAL NO TIENE EL METODO DE DERRAPAR, ES EL COCHE DE RALLY EL QUE DERRAPA,
+								// PORQUE TIENE LA FORMA DEL PADRE
+		supraNormal.acelerar();
+		supraNormal.mostrar();
+		
+		CocheRally cr = (CocheRally) supraNormal; // CONVERSION EXPLICITA O CASTING 
+												  // EL COCHE NORMAL NO SE PUEDE CONVERTIR EN COCHE DE RALLY
+		System.out.println("Y el rozamiento?? " + cr.getRozamiento());
+		
+		/*cr = (CocheRally) miCoche;
+		System.out.println("Y el rozamiento?? " + cr.getRozamiento());*/
+		
+		
+		
     }
 }
