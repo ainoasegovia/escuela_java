@@ -40,7 +40,7 @@ public class StringAux{
 		}
 		return resultado; // Hardcodeado
 	}
-	public static String quitarEspacios(String texto){
+	public static String quitarEspacios2(String texto){
 		texto = texto.trim();
 		String[] palabras = texto.split(" ");
 		String resultado = "";
@@ -49,6 +49,14 @@ public class StringAux{
 				resultado += palabra + " ";
 		}
 		return resultado.trim(); 
+	}
+	public static String quitarEspacios(String texto){
+		texto = texto.trim();
+		String resultado = "";
+		while(texto.contains("   ")){
+			texto = texto.replace("  ", " ");
+		}
+		return texto; 
 	}
 	public static int contarPalabras(String texto){
 		return 0;
