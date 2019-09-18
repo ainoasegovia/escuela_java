@@ -36,9 +36,7 @@ public class ProbandoString {
 		// TOUPPERCASE Y TRIM (QUITA ESPACIOS EXTERIORES EL TRIM)
 		texto3 = texto3.toUpperCase().trim();
 		System.out.println(texto3);
-		
-		//System.out.println(texto3.quitarEspacios());
-		
+				
 	}
 
 }

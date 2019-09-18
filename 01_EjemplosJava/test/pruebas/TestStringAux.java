@@ -33,6 +33,7 @@ public class TestStringAux {
 		String resultadoOK = "en un LUGAR";
 		StringAux texto3sinEsp = new StringAux(texto3);
 		String resultadoAux = texto3sinEsp.quitarEspacios(); // Futura llamada
+		
 		assertEquals(resultadoOK, resultadoAux);
 		
 		/*System.out.println("Hola");		

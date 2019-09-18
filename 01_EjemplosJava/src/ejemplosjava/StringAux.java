@@ -26,7 +26,7 @@ public class StringAux{
 	public int contarPalabras(){
 		return contarPalabras(string);
 	}
-	public static String quitarEspacios(String texto){
+	public static String quitarEspacios1(String texto){
 		// Recorrer caracter a caracter quitando los espacios
 		String resultado = "";
 		texto = texto.trim();
@@ -39,6 +39,16 @@ public class StringAux{
 			}
 		}
 		return resultado; // Hardcodeado
+	}
+	public static String quitarEspacios(String texto){
+		texto = texto.trim();
+		String[] palabras = texto.split(" ");
+		String resultado = "";
+		for(String palabra : palabras){
+			if(! palabra.isEmpty())
+				resultado += palabra + " ";
+		}
+		return resultado.trim(); 
 	}
 	public static int contarPalabras(String texto){
 		return 0;
