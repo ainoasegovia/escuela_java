@@ -50,13 +50,16 @@ public class StringAux{
 		}
 		return resultado.trim(); 
 	}
-	public static String quitarEspacios(String texto){
+	public static String quitarEspacios3(String texto){
 		texto = texto.trim();
 		String resultado = "";
-		while(texto.contains("   ")){
+		while(texto.contains("  ")){
 			texto = texto.replace("  ", " ");
 		}
 		return texto; 
+	}
+	public static String quitarEspacios(String texto){
+		return texto.trim().replaceAll(" +", " ");
 	}
 	public static int contarPalabras(String texto){
 		return 0;
