@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pruebas;
 
 import ejemplosjava.StringAux;
@@ -36,14 +31,19 @@ public class TestStringAux {
 		
 		assertEquals(resultadoOK, resultadoAux);
 		
-		/*System.out.println("Hola");		
-		assertTrue( 9 % 2 == 1 );
-		
-		System.out.println("Adios");
-		assertFalse( 8 % 2 == 1 );
-
-		System.out.println("Hola de nuevo");
-		assertEquals("s".toUpperCase(), "A");*/
-		
+		assertEquals("En un lugar de Madrid...", 
+                StringAux.quitarEspacios("En un lugar de Madrid...") );
+        assertEquals("En un lugar de Madrid...", 
+                StringAux.quitarEspacios("    En un lugar de Madrid...") );
+        assertEquals("En un lugar de Madrid...", 
+                StringAux.quitarEspacios("En un    lugar de Madrid...   ") );
 	}
+	
+	@Test
+    public void probandoContarPalabras() {
+        assertEquals(5,  StringAux.contarPalabras("En un lugar de Madrid...") );
+        assertEquals(3,  StringAux.contarPalabras("        en   un     LUGAR    "));
+        assertEquals(0,  StringAux.contarPalabras("        "));
+        assertEquals(1,  StringAux.contarPalabras("aaaaaaa"));
+    }
 }
