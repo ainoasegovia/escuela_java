@@ -6,6 +6,7 @@ import POO.Pelota;
 import POO.TipoCarburante;
 import POO.TipoColor;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import static org.junit.Assert.*;
 import org.junit.Test;
@@ -88,7 +89,7 @@ public class TestColecciones {
 		System.out.println("-> " + coche.toString());
 	}
 	
-	@Test
+	//@Test
 	public void sets(){
 		HashSet<Pelota> pelotas = new HashSet<>();
 		Pelota p1 = new Pelota();
@@ -106,7 +107,26 @@ public class TestColecciones {
 		
 		for(Pelota p : pelotas){
 			System.out.println(p.toString());
+		}	
+	}
+	@Test
+	public void maps(){
+		HashMap<String,Boolean> coloresCalidos = new HashMap<>();
+		coloresCalidos.put("NEGRO", Boolean.FALSE);
+		coloresCalidos.put("AZUL", true);
+		coloresCalidos.put("VERDE", false);
+		coloresCalidos.put("AMARILLO", false);
+		coloresCalidos.put("ROJO", true);
+		
+		if(coloresCalidos.get("ROJO")){
+			System.out.println("Rojo es calido");
 		}
-			
+		if(coloresCalidos.get("VERDE")){
+			System.out.println("Verde es calido");
+		}
+		System.out.println("AZUL es " + coloresCalidos.get("AZUL"));
+		
+		coloresCalidos.put("AMARILLO",false);
+		System.out.println("AMARILLO es " + coloresCalidos.get("AMARILLO"));
 	}
 }
