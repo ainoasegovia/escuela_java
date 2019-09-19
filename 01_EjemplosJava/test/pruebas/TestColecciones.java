@@ -1,15 +1,13 @@
 package pruebas;
 
-import ejemplosjava.Coche;
-import ejemplosjava.CocheRally;
-import ejemplosjava.TipoCarburante;
-import ejemplosjava.TipoColor;
+import POO.Coche;
+import POO.CocheRally;
+import POO.TipoCarburante;
+import POO.TipoColor;
 import java.util.ArrayList;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
- *
  * @author Ainoa
  */
 public class TestColecciones {
@@ -45,7 +43,8 @@ public class TestColecciones {
 		arrayListObj.add("Aaaaaaa");
 		arrayListObj.add(elMio);
 		arrayListObj.add(false);
-
+		
+		System.out.println(" ");
 		for (Object obj : arrayListObj){
 			System.out.println("OBJ: " + obj);
 		}
@@ -69,18 +68,20 @@ public class TestColecciones {
 		cochesVender.add(new CocheRally("Ford"));
 		
 		if(cochesVender.contains(coches[0])){
-			System.out.println("El coche existe");
+			System.out.println("\nEl coche existe");
 		}
 		
 		//TestColecciones.mostrarCoche(elMio); // Lo invocamos nosotros
+		System.out.println("");
 		cochesVender.forEach(TestColecciones::mostrarCoche);
-				/*(coche) -> { // Funcion Lamda/flecha/anonima
-					System.out.println(" -> " + coche.toString());
-				}
-		);*/
+				/* cochesVender.forEach(
+								(coche) -> { // Funcion Lambda/flecha/anonima
+									System.out.println(" -> " + coche.toString());
+								}
+				);*/
 	}
 	
 	public static void mostrarCoche(Coche coche){
-		System.out.println(" -> " + coche.toString());
+		System.out.println("-> " + coche.toString());
 	}
 }

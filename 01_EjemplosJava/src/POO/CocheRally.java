@@ -1,4 +1,4 @@
-package ejemplosjava;
+package POO;
 /**
  * @author Ainoa
  */

@@ -1,6 +1,6 @@
 package pruebas;
 
-import ejemplosjava.StringAux;
+import ClasesJava.StringAux;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

@@ -1,6 +1,10 @@
 package ejemplosjava;
 
 import ClasesJava.ProbandoString;
+import POO.Coche;
+import POO.CocheRally;
+import POO.TipoCarburante;
+import POO.TipoColor;
 
 /**
  * @author Ainoa
@@ -8,7 +12,8 @@ import ClasesJava.ProbandoString;
 public class Main {
 
     public static void main(String[] args) {
-		ProbandoString.tratarCadenas();
+		//ProbandoString.tratarCadenas();
+		mainCoches(args);
 	}
 	public static void mainCoches(String[] args) {
         Coche miCoche;
@@ -55,7 +60,7 @@ public class Main {
 		miSupra.mostrar();
 	
 		Coche supraNormal = miSupra; // CONVERSION IMPLICITA
-		supraNormal.explosionCilindro();
+		//supraNormal.explosionCilindro();
 		//supraNormal.derrapar(); // NO SE PUEDE PORQUE EL COCHE NORMAL NO TIENE EL METODO DE DERRAPAR, ES EL COCHE DE RALLY EL QUE DERRAPA,
 								// PORQUE TIENE LA FORMA DEL PADRE
 		supraNormal.acelerar();
@@ -64,6 +69,8 @@ public class Main {
 		CocheRally cr = (CocheRally) supraNormal; // CONVERSION EXPLICITA O CASTING 
 												  // EL COCHE NORMAL NO SE PUEDE CONVERTIR EN COCHE DE RALLY
 		System.out.println("Y el rozamiento?? " + cr.getRozamiento());
+		
+		// ESTE LANZA EXCEPCION
 		
 		/*cr = (CocheRally) miCoche;
 		System.out.println("Y el rozamiento?? " + cr.getRozamiento());*/
