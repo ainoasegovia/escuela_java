@@ -2,9 +2,12 @@ package pruebas;
 
 import POO.Coche;
 import POO.CocheRally;
+import POO.Pelota;
 import POO.TipoCarburante;
 import POO.TipoColor;
 import java.util.ArrayList;
+import java.util.HashSet;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
@@ -12,7 +15,7 @@ import org.junit.Test;
  */
 public class TestColecciones {
 	
-	@Test
+	//@Test
 	public void arrays() {
 		Coche[] coches = new Coche[3]; // Coche coches[];
 		
@@ -83,5 +86,27 @@ public class TestColecciones {
 	
 	public static void mostrarCoche(Coche coche){
 		System.out.println("-> " + coche.toString());
+	}
+	
+	@Test
+	public void sets(){
+		HashSet<Pelota> pelotas = new HashSet<>();
+		Pelota p1 = new Pelota();
+		pelotas.add(p1);
+		Pelota p2 = new Pelota();
+		pelotas.add(p2);
+		Pelota p3 = new Pelota();
+		pelotas.add(p3);
+		
+		pelotas.add(p2);
+		pelotas.add(p3);
+		
+		System.out.println("Set pelotas: " + pelotas);
+		assertEquals(pelotas.size(), 3);
+		
+		for(Pelota p : pelotas){
+			System.out.println(p.toString());
+		}
+			
 	}
 }
