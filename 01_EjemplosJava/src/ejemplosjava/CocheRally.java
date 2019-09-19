@@ -5,6 +5,11 @@ package ejemplosjava;
 public class CocheRally extends Coche {
 	private float rozamiento;
 
+	public CocheRally(String marca){
+		super(marca); // Invocamos al constructor de la clase que hereda en este caso Coche
+		this.rozamiento = 5.1234f;
+	}
+	
 	public CocheRally(String marca, TipoCarburante carburante, TipoColor color,float roz){
 		super(marca,carburante,color); // Invocamos al constructor de la clase que hereda en este caso Coche
 		this.rozamiento = roz;

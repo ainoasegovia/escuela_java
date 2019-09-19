@@ -1,10 +1,6 @@
 package pruebas;
 
 import ejemplosjava.StringAux;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,12 +9,6 @@ import static org.junit.Assert.*;
  */
 public class TestStringAux {
 	
-	public TestStringAux() {
-	}
-	
-	// TODO add test methods here.
-	// The methods must be annotated with annotation @Test. For example:
-	//
 	@Test
 	public void probandoQuitarEspacios() {
 		String texto = "En un lugar de la Mancha de cuyo nombre no quiero acordarme, vivia...";

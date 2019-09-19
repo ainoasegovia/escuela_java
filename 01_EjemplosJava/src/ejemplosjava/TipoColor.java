@@ -1,4 +1,5 @@
 package ejemplosjava;
+
 /**
  * @author Ainoa
  */
@@ -10,9 +11,3 @@ public enum TipoColor {
 		AZUL, 
 		PLATEADO
 }
-enum TipoCarburante{
-	DIESEL,
-	GASOLINA,
-	ELECTRICO
-}
-

@@ -13,6 +13,13 @@ public class Coche { // hereda de Object
 	private TipoColor color = TipoColor.ROJO;
 	private final TipoCarburante carburante;
 
+	public Coche(String marca) {
+        this.numRuedas = 4;
+        this.marca = marca;
+		this.color = TipoColor.AZUL;
+		this.carburante = TipoCarburante.DIESEL; 
+    }
+	
     public Coche(String marca, TipoCarburante carburante, TipoColor color) {
         this.numRuedas = 4;
         this.marca = marca;
