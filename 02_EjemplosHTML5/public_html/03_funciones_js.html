@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- FUNCIONES -->
+<html>
+	<head>
+		<title>Funciones</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div>Funciones</div>
+		
+		<script>
+			
+			function miFuncion(arg1,arg2){
+				document.write("<p>Argumento 1: " + arg1 + "</p>");
+				document.write("<p>Argumento 2: " + arg2 + "</p><hr/>");
+				
+				// Variable llamada arguments
+				
+				if(arguments.length > 2){	
+					document.write("<br/><h2>Argumento 3: " + arguments[2] + "</h2><hr/>");	
+					if(arguments.length > 3)
+						for(arg in arguments)	
+							document.write("<h2>Argumento 4(con indice): " + arguments[arg] + "</h2>");	
+					document.write("<hr/>");	
+						for(arg of arguments) /* Como el foreach de java */ 	
+							document.write("<h2>Argumento 5(con foreach): " + arg + "</h2>");
+					document.write("<hr/>");
+				}
+			};
+			miFuncion("Argumento texto", 2000);
+			miFuncion(new Object(), false);
+			miFuncion("Un solo argumento");
+			miFuncion("Muchos", 100, null,"argumentos");
+			
+			var otraFuncion = function(veces){
+				for (var i = 0; i < veces; i++)
+					document.write("<p>Vez " + i + "</p>");
+			document.write("<hr/>");
+			};
+			
+			otraFuncion.puesSi = "Es un objeto";
+			otraFuncion(3);
+			document.write("<p>Valor:  " + otraFuncion.puesSi + "</p><hr/>");
+
+			var noTipica = new Function("x","y","return x * y");
+			document.write("<p>5 * 4 =  " + noTipica(5,4) + "</p><hr/>");
+			
+			Function.prototype.toString = function(){ /* NOS DEVUELVE TODO EL CODIGO */
+				return "Sustituido";
+			};
+			
+			Function.funcionEstatica = function(){ /* Funcion estatica */
+				return "funcionestatica";
+			};
+			
+			document.write(miFuncion.toString());
+			Function.funcionEstatica();
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+body {
+    background-color: #ffccff;
+}
+
+header {
+    background-color: brown;
+    text-align: center;
+    padding: 20px;
+}
+
+h1{
+	text-decoration: underline;
+	color:#00cccc;
+}
+
+ul li {
+	list-style-type: circle;
+	color:#999900;
+	display:inline;
+	margin: 100px;
+	padding: 10px;
+}
+
+ul li > *:hover {
+    background-color: white;
+	
+}
+.menu{
+	background-color: #ffff00;
+	border: #660066 4px dashed;
+	border-radius: 10px;
+	width: 80%;
+	height: 10%;
+}
+
+table, th, tr{
+	background-color: aqua;
+	border:3px solid;
+	margin:25px;
+	
+}
+th{
+	background-color: orange;
+}
+footer{
+	text-align: center;
+	background-color: #ffcccc;
+	padding: 10px;
+	border-style: double;
+	margin-top: 20px;
+	font-weight: bold;
+	color: darkblue;
+}

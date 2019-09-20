@@ -1,0 +1,62 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20-sep-2019, 11:36:06
+    Author     : alumno
+*/
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: aquamarine;
+}
+
+header {
+    background-color: #ccffff;
+    text-align: center;
+    padding: 20px;
+}
+
+.letra-azul {
+    color: blue;
+}
+
+.mucho-margen {
+    margin: 10px 20px 30px 40px;
+}
+
+nav, .fondo-azulclaro {
+    background-color: deepskyblue;
+}
+
+#miparrafo {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+header nav { /* nav descendientes de header */
+}
+
+header > nav { /* nav hijos directos de header*/
+    font-style: italic;
+}
+
+div > *:hover {
+    background-color: white;
+}
+
+img {
+	/* display:block; en bloque, uno encima de otro */
+	/* display:inline; en linea, se adapta a la pantalla */
+	/* display:inline-block; trata cada cosa como un bloque, si como bloque entra dentro de la ventana lo pone,
+	pero si no entra no lo pone */
+	/* display:block/* ; uno debajo de otro, pueden utilizar varias lineas*/
+	display: flex; 
+	flex-direction: column;
+}
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Formularios HTML</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form name="miformulario" id="miformulario" method="get" action="#">
+            <h1 id="cabecera">Formulario</h1>
+            <br/>
+            <label>Introduce tu nombre: </label>
+            
+            <input name="nombre" type="text" placeholder="Nombre"/>
+            
+            <br/><br/>
+            <label>Introduce tu edad: </label>
+
+            <input name="edad" type="number" min="1" max="199" placeholder="Edad"/>
+            
+            <br/><br/>
+            <label>Introduce tu email: </label>
+
+            <input name="email" type="email" placeholder="Email"/>
+            
+            <br/><br/>
+            <label>Introduce tu contraseña </label>
+
+            <input name="contraseña" type="password" placeholder="Password"/>
+            <br/><br/>
+            <label>Introduce tu CP: </label>
+
+            <input name="cp" type="text" pattern="^[0-9]{4,5}$" placeholder="CP"/> <!-- ^ empieza y $ acaba-->
+            <input type="submit" value="Hacer como que enviamos"/>
+            
+        </form>
+    </body>
+</html>

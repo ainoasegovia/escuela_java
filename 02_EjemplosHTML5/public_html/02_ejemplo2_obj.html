@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!-- Ejemplos Obj -->
+<html>
+	<head>
+		<title>Ejemplos Obj</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div>Ejemplos Obj</div>
+		
+		<script>
+			var valor1 = new Object();
+			var valor2 = {
+				"dni" : "11111111-E",
+				"nombre" : "Marcos",
+				nacimiento : new Date()
+			};
+			
+			var persona = new Object();
+			persona.dni = "012345678-Z";
+			persona.nombre = "Ainoa";
+			persona.edad = "24";
+			persona.nacimiento = new Date();
+						
+			persona["apellidos"] = "Segovia Diaz";
+			
+			/*window.alert("Info persona\nNombre: " + persona.nombre
+				+ "\nApellidos: " + persona.apellidos
+				+ "\nEdad: " + persona.edad
+				+ "\nDNI: " + persona.dni
+				+ "\nNacimiento: " + persona.nacimiento);*/
+			/*window.alert("Info persona\nNombre: " + valor2.nombre
+					+ "\nEdad: " + valor2.edad
+					+ "\nDNI: " + valor2.dni
+					+ "\nNacimiento: " + valor2["nacimiento"]);*/
+			
+			var coches = new Object();
+			coches.matricula = "2222-K";
+			coches.marca = "Seat";
+			coches.color = "Azul";
+			coches.numRuedas = 4;
+			coches.carburante = "ELECTRICO";
+			
+			window.alert("Info coche\nMatricula: " + coches.matricula
+				+ "\nMarca: " + coches.marca
+				+ "\nColor: " + coches.color
+				+ "\nNumero de ruedas: " + coches.numRuedas
+				+ "\nCarburante: " + coches.carburante);
+		</script>
+	</body>
+</html>
