@@ -3,7 +3,8 @@ class Calculadora {
     constructor() {
         //this.result = document.getElementById("resultado");
 		this.result = $("#resultado");
-        this.anterior = document.getElementById("anterior");
+        //this.anterior = document.getElementById("anterior");
+		this.anterior = $("#anterior");
 		
         this.mem = 0;
         this.operador = "";
@@ -43,7 +44,7 @@ class Calculadora {
         // Subir a caja texto valor anterior y operador
         
         if (this.operador !== "=" && operadorActual !== "=") {
-            this.anterior.value = `${this.mem} ${operadorActual}`;
+            this.anterior.val(`${this.mem} ${operadorActual}`);
             this.result.val("0");
             this.operador = operadorActual;
         } else {
