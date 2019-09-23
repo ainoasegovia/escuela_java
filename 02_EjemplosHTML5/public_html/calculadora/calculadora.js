@@ -62,7 +62,8 @@ class Calculadora {
 
 let calculadora = null;
 
-window.onload = function() {
+
+let inicializacion = function() {
     calculadora = new Calculadora();
     
     let botones = document.getElementsByClassName("num"); // array de botones
@@ -81,3 +82,4 @@ window.onload = function() {
         };
     }
 };
+jQuery(document).ready(inicializacion);
