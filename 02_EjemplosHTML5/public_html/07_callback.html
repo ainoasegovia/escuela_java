@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- unciones Call Back -->
+<html>
+	<head>
+		<title>Funciones Call Back</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+	<body>
+		<div>Funciones Call Back</div>
+		<div id="mensajes"></div>
+		<script>
+			let mensajes = document.getElementById("mensajes");
+			
+			function funNormal(param, funCllBk){
+				 mensajes.innerHTML += `Funcion normal ${param} invocada<br/>`;
+				 funCllBk(param);
+			}
+			
+			function funCallback_A(conQue){
+				mensajes.innerHTML += `Funcion Callback AAA invocada con ${conQue}<br/>`;
+			}
+			
+			function funCallback_B(conQue){
+				mensajes.innerHTML += `Funcion Callback BBB invocada con ${conQue}<br/>`;
+			}
+			
+			funNormal("Aaaaa",funCallback_A);
+			funNormal("Bbbbb",funCallback_B);
+		
+			mensajes.onclick = function(){	
+				funNormal("Ccccccc",funCallback_B);
+			};
+			
+		</script>
+	</body>
+</html>

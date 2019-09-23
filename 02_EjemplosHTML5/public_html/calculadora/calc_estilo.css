@@ -2,7 +2,8 @@
     display: inline-block;
     width: 60px; 
 	height: 40px; 
-	border-width: 2px;
+	border-width: 3px;
+	border-style: double;
 	background-color: ghostwhite;
 	margin: 3px;
 	text-align: center;
@@ -12,8 +13,8 @@
 	font-weight: bold;
 }
 .res {
-    width: 200px; 
+    width: 309px; 
 	height: 40px;
-	border-width: 2px;
+	border-width: 3px;
 	font-size: 2em;
 }
