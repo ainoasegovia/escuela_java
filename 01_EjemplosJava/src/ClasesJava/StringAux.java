@@ -58,7 +58,7 @@ public class StringAux{
 		return texto; 
 	}
 	public static String quitarEspacios(String texto){
-		return texto.trim().replaceAll(" +", " "); // El caracter anterior repetido una o mas veces
+		return texto.trim().replaceAll("\\s+", " "); // El caracter anterior repetido una o mas veces
 	}
 	public static int contarPalabras1(String texto) {
         texto = texto.trim();
