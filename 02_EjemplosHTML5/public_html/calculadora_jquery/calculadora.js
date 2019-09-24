@@ -1,26 +1,27 @@
 class Calculadora {
     constructor() {
-        this.result = document.getElementById("resultado");
-        this.anterior = document.getElementById("anterior");
+        // this.result = document.getElementById("resultado");
+        this.result = $("#resultado");
+        this.anterior = $("#anterior");
         this.mem = 0;
         this.operador = "";
         this.nuevoNum = false;
     }
     numeroPulsado(eventObj) {
         if (this.nuevoNum) {
-            this.result.value = "0";
+            this.result.val("0");
             this.nuevoNum = false;
         }
         let valor = eventObj.currentTarget.innerHTML;
         // alert("Pulsado " + valor);
         if (valor ==="+/-") {
-            this.result.value = "" + (- (parseFloat(calculadora.result.value)));
+            this.result.val("" + (- (parseFloat(calculadora.result.val()))));
         } else if (valor === "." ) {
-            if ( ! this.result.value.includes(".")) 
-                this.result.value += valor;
+            if ( ! this.result.val().includes(".")) 
+                this.result.val(this.result.val() + valor);
         } else {
-            this.result.value += valor;
-            this.result.value = parseFloat(this.result.value);
+            this.result.val(this.result.val() + valor);
+            this.result.val(parseFloat(this.result.val()));
         }
     }
     operadorPulsado(evObj) {
@@ -29,12 +30,12 @@ class Calculadora {
         if (this.operador !== "" || operadorActual === "=") {
             this.calcular();
         }
-        this.mem = parseFloat(this.result.value);
+        this.mem = parseFloat(this.result.val());
         // Subir a caja texto valor anterior y operador
         
         if (this.operador !== "=" && operadorActual !== "=") {
-            this.anterior.value = `${this.mem} ${operadorActual}`;
-            this.result.value = "0";
+            $("#anterior").val( `${this.mem} ${operadorActual}`);
+            this.result.val("0");
             this.operador = operadorActual;
         } else {
             this.operador = "";
@@ -44,27 +45,24 @@ class Calculadora {
     }
     calcular() {        
         if ( this.operador !== "" && this.operador !== "=") {
-            let valActual = parseFloat(this.result.value);
+            let valActual = parseFloat(this.result.val());
             let resultado = eval(this.mem.toString() + this.operador + valActual);
-            this.result.value = resultado;
+            this.result.val(resultado);
+            $("#anterior").css("background-color", "green");
         }
     }
 };
 let calculadora = null;
 
-window.onload = function() {
+let inicializacion = function() {
     calculadora = new Calculadora();
     
-    let botones = document.getElementsByClassName("num"); // array de botones
-    for (let boton of botones) {
-        boton.addEventListener("click", (evtObj) => { 
-            calculadora.numeroPulsado(evtObj); 
-        });
-    }
-    let botonesOp = document.getElementsByClassName("oper"); // array de botones
-    for (let btnOp of botonesOp) {
-        btnOp.onclick = (evObj) => {
-            calculadora.operadorPulsado(evObj);
-        };
-    }
+    // Todos los elementos con la clase .num
+    $(".num").click((evtObj) => { 
+        calculadora.numeroPulsado(evtObj); 
+    });
+    $(".oper").click((evObj) => {
+        calculadora.operadorPulsado(evObj);
+    });
 };
+$(document).ready( inicializacion  );
