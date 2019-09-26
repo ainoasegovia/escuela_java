@@ -13,6 +13,7 @@
 		<link rel="stylesheet" href="./estilos/estilos.jsp"/>
     </head>
     <body>
+		<%@include file="header.jsp" %>
         <h1>Datos</h1>
         <p>Te llamas <%  out.println(request.getParameter("nombre")); %> </p>
         <p>Y tienes <% out.println( request.getParameter("edad")); %> </p>
