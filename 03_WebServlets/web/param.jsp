@@ -1,17 +1,11 @@
-<%-- 
-    Document   : param
-    Created on : 25-sep-2019, 17:36:50
-    Author     : alumno
---%>
+<%@include file="head.jsp"%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%-- Pagina de inicio usando funciones e includes --%>
+
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Datos introducidos</title>
-		<link rel="stylesheet" href="./estilos/estilos.jsp"/>
-    </head>
+	<%= head("Parametros") %>
     <body>
 		<%@include file="header.jsp" %>
         <h1>Datos</h1>

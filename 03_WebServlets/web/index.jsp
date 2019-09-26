@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<%--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
---%>
+<%@include file="head.jsp"%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+
+<%-- Pagina de inicio usando funciones e includes --%>
 
 <html>
-    <head>
-        <title>Proyecto 03_WebServlets</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="./estilos/estilos.jsp"/>
-    </head>
+	<%= head("Inicio") %>
     <body>
 		<%@include file="header.jsp" %>
     </body>
