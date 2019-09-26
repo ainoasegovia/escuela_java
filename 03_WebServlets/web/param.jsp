@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Datos introducidos</title>
+		<link rel="stylesheet" href="./estilos/estilos.jsp"/>
     </head>
     <body>
         <h1>Datos</h1>
@@ -19,7 +20,7 @@
         <ul>
         <%  for (int i = 0; i < 10; i++) { %>
         
-            <li>Numero  <% out.println( "" + i ); %>  </li>
+            <li class="tipo-letra-tam-<%= i %>">Numero  <% out.println( "" + i ); %>  </li>
             
         <% } %>
         </ul>
