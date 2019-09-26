@@ -9,7 +9,7 @@
 	<body>
 		<h1>Ejemplo MVC con JSP y Servlet</h1>
 		<br/>
-        <form name='form1' method='post' action='./param.jsp'>            
+        <form name='form1' method='post' action='./personas.do'>            
             <table border='1'>
                 <tr><td>Nombre:</td>  
                     <td><input type='text' name='nombre' id='nombre'/></td></tr>
