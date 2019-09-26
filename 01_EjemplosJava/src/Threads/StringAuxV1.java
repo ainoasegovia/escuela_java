@@ -5,7 +5,7 @@
  */
 package threads;
 
-import ClasesJava.StringAux;
+import clasesjava.StringAux;
 
 /**
  *
@@ -16,7 +16,7 @@ public class StringAuxV1 implements IStringAux {
     
     @Override
     public String quitarEspacios(String str) {
-        return StringAux.quitarEspacios1(str);
+        return StringAux.quitarEspSobrantesV1(str);
     }
     
 }

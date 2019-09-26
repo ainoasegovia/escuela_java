@@ -5,7 +5,7 @@
  */
 package threads;
 
-import ClasesJava.StringAux;
+import clasesjava.StringAux;
 
 /**
  *
@@ -19,7 +19,7 @@ public class HiloFicheroStrAuxV2 extends HiloFichero {
 
     @Override
     protected String quitarEspacios(String s) {
-        return StringAux.quitarEspacios2(s);
+        return StringAux.quitarEspSobrantesV2(s);
     }
     
 }

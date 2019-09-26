@@ -5,7 +5,7 @@
  */
 package threads;
 
-import ClasesJava.StringAux;
+import clasesjava.StringAux;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -22,6 +22,7 @@ import java.util.logging.Logger;
  */
 public abstract class HiloFichero {
     protected IStringAux strAux;
+    
     
     public HiloFichero(IStringAux strAux ) {
         this.strAux = strAux;
@@ -84,8 +85,8 @@ public abstract class HiloFichero {
                 String linea = escaner.nextLine();
                 // StringAux strAux = new StringAux(linea);
                 // System.out.println(quitarEspacios(linea));
-                 System.out.println(strAux.quitarEspacios(linea));
-                
+                 // System.out.println(strAux.quitarEspacios(linea));
+                quitarEspacios(linea);
             }
         } catch(Exception ex) {
             System.err.println("Error: " + ex.getMessage());
