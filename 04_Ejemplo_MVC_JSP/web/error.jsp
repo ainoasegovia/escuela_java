@@ -1,6 +1,6 @@
 <%-- 
     Document   : error
-    Created on : 26-sep-2019, 13:42:21
+    Created on : 26-sep-2019, 13:42:14
     Author     : alumno
 --%>
 
@@ -9,13 +9,13 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Error en registro :( </title>
+        <title>Error en registro</title>
     </head>
     <body>
-        <h1>Error en registro :( </h1>
-		Error: <span style="color: red">
-			<%= session.getAttribute("mensajeError") %> <%-- request.getSession().getAttribute --%>
-					
-		</span>
+        <h1>Error en registro</h1>
+        Error: 
+        <span style="color: red">
+            <%= /*request.getSession()*/ session.getAttribute("mensajeError") %>                    
+        </span>
     </body>
 </html>

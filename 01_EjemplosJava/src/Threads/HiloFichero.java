@@ -5,7 +5,7 @@
  */
 package threads;
 
-import clasesjava.StringAux;
+import ClasesJava.StringAux;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
