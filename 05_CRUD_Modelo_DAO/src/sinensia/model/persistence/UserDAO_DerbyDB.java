@@ -35,47 +35,71 @@ public class UserDAO_DerbyDB implements IUserDAO {
 	}
 	
 	@Override
-	public User create(User user) throws SQLException {
-		Connection con = null;
-		
-		con = DriverManager.getConnection(CONEX_DB, USER_DB, PSSWD_DB);
-		/*String sqlQuery = "INSERT INTO users(email,password,name,age) VALUES ("
-				+ " '" + user.getEmail() + "', '" + user.getPassword() + "', '" + user.getName() + "', " + user.getAge() + ")";
-		
+    public User create(User user) throws SQLException {
+        Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PSSWD_DB);
+        /* String sqlQuery = "INSERT INTO users (email, password, name, age) VALUES ("
+                + " '" + user.getEmail()  + "', '" + user.getPassword() + "', '" + user.getName()  + "', " + user.getAge() + ")"; 
+        
 		Statement stmt = con.createStatement();
-		stmt.executeUpdate(sqlQuery); */
+        stmt.executeUpdate(sqlQuery);*/
 		
-		//Los ? son los parametros de la sentencia SQL. Evitamos SQL Injection
+        // Los ? son los parámetros de la sentencia SQL. Evitamos SQL Injection
 		
-		String sqlQuery = "INSERT INTO users(email,password,name,age) VALUES (?, ?, ?, ?)"; 
+        String sqlQuery = "INSERT INTO users (email, password, name, age) VALUES (?, ?, ?, ?)";
 		
-		PreparedStatement prepStmt = con.prepareCall(sqlQuery);
-			
-		prepStmt.setString(1, user.getEmail());
-		prepStmt.setString(2, user.getPassword());
-		prepStmt.setString(3, user.getName());
-		prepStmt.setInt(4, user.getAge());
+        PreparedStatement prepStmt = con.prepareCall(sqlQuery);
+		
+        prepStmt.setString(1, user.getEmail());
+        prepStmt.setString(2, user.getPassword());
+        prepStmt.setString(3, user.getName());
+        prepStmt.setInt(4, user.getAge());
+		
+        prepStmt.executeUpdate();
 
-		prepStmt.executeUpdate();
+        // Aquí buscamos el Id a través del email
+        /*String sqlQueryBusqId = "SELECT id FROM users WHERE email=?";
+        PreparedStatement prepStmtBusqId = con.prepareCall(sqlQueryBusqId);
+        prepStmtBusqId.setString(1, user.getEmail());
+        ResultSet res = prepStmtBusqId.executeQuery();
+        while (res.next()) {
+            int id = res.getInt("id");
+            user.setId(id);
+        }*/
 		
-		// Buscamos el id a traves del email
+        user.setId(getOneByEmail(user.getEmail()).getId());
+        con.close();
 		
-		String sqlQuery1 = "SELECT id FROM users WHERE email = ? ";
+        // Devolvemos el usuario, con el Id que lo hemos buscado en la bbdd
 		
-		PreparedStatement prepStmt1 = con.prepareCall(sqlQuery1);
-		prepStmt1.setString(1, user.getEmail());
-		
-		ResultSet res = prepStmt1.executeQuery();
-		
-		while(res.next()){
-			int id = res.getInt("id");
-			user.setId(id);
-		}
-		
-		con.close();
+        return user;
+    }
+	
+	   public User getOneByEmail(String email) throws SQLException {
+		   
+        try (Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PSSWD_DB)) {
 			
-		return user;
-	}
+            String sqlQueryBusqId = "SELECT id, password, name, age FROM users WHERE email=?";
+			
+            PreparedStatement prepStmtBusqId = con.prepareCall(sqlQueryBusqId);
+            prepStmtBusqId.setString(1, email);
+			
+            ResultSet res = prepStmtBusqId.executeQuery();
+			
+             while (res.next()) {
+                int id = res.getInt("id");
+                String password = res.getString("password");
+                String name = res.getString("name");
+                int age = res.getInt("age");
+				
+                User user = new User(email, password, name, age);
+                user.setId(id);
+				
+                return user;
+             }
+        }
+		
+        return null;
+    }
 	
 	@Override
 	public List<User> getAll() throws SQLException {
@@ -119,5 +143,29 @@ public class UserDAO_DerbyDB implements IUserDAO {
         // if (count == 1) return true; else return false;
         return count == 1;
 	}	
+	
+	@Override
+	public User update(User user) throws SQLException {
+		try(Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PSSWD_DB)){
+		
+			String sqlQuery = "UPDATE users SET email = ?, password = ?, name = ?, age = ? WHERE id = ? ";
+
+			PreparedStatement prepStmt = con.prepareCall(sqlQuery);
+
+			prepStmt.setString(1, user.getEmail());
+			prepStmt.setString(2, user.getPassword());
+			prepStmt.setString(3, user.getName());
+			prepStmt.setInt(4, user.getAge());
+			prepStmt.setInt(5, user.getId());
+
+			int count = prepStmt.executeUpdate();
+			
+			if(count == 1){
+				return getOneByEmail(user.getEmail()); // return user;
+			}else{
+				return null;
+			}		
+		}
+	}
 
 }
