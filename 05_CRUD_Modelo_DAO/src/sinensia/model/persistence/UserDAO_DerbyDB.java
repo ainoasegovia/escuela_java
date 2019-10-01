@@ -105,19 +105,19 @@ public class UserDAO_DerbyDB implements IUserDAO {
 		}
 	}
 
-	@Override
-	public boolean remove(int id) throws SQLException {
-		try (Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PSSWD_DB)) {
-			
-			String sqlQuery = "DELETE FROM users WHERE id = ? ";
-			
-			PreparedStatement prepStmt = con.prepareCall(sqlQuery);
-			prepStmt.setInt(1, id);
-			
-			prepStmt.executeQuery();
-		}
+    @Override
+    public boolean remove(int id) throws SQLException {
 		
-		return true;
+        Connection con = DriverManager.getConnection(CONEX_DB, USER_DB, PSSWD_DB);
+		
+        String sqlQuery = "DELETE FROM users WHERE id = ?";
+		
+        PreparedStatement prepStmt = con.prepareCall(sqlQuery);
+        prepStmt.setInt(1, id);
+		
+        int count = prepStmt.executeUpdate();
+        // if (count == 1) return true; else return false;
+        return count == 1;
 	}	
 
 }
