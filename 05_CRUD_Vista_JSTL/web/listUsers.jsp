@@ -26,10 +26,14 @@
 							<td><input id="id" name="id" 
 									   readonly type="number" size="4" 
 									   value="${user.id}"/></td>
-							<td>${user.email}</td>
-							<td>${user.password}</td>
-							<td>${user.name}</td>
-							<td>${user.age}</td>
+							<td><input id="email" name="email"
+									   type="text" value="${user.email}"/></td>
+							<td><input id="password" name="password"
+									   type="text" value="${user.password}"/></td>
+							<td><input id="name" name="name"
+									   type="text" value="${user.name}"/></td>
+							<td><input id="age" name="age"
+									   type="text" value="${user.age}"/></td>
 							<td><input name="method" type="submit" value="Delete"/></td>
 							<td><input name="method" type="submit" value="Modify"/></td>
 						</tr>

@@ -54,6 +54,8 @@ public class UsersController extends HttpServlet {
 				User newUser = userSrv.create(email, password, name, age);
 				req.setAttribute("user", newUser);
 			}
+			
+			
         } catch (Exception ex) {
             Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
 			req.setAttribute("errorMessage", ex.getMessage());
