@@ -26,16 +26,24 @@
 							<td><input id="id" name="id" 
 									   readonly type="number" size="4" 
 									   value="${user.id}"/></td>
-							<td><input id="email" name="email"
-									   type="text" value="${user.email}"/></td>
-							<td><input id="password" name="password"
-									   type="text" value="${user.password}"/></td>
-							<td><input id="name" name="name"
-									   type="text" value="${user.name}"/></td>
-							<td><input id="age" name="age"
-									   type="text" value="${user.age}"/></td>
-							<td><input name="method" type="submit" value="Delete"/></td>
-							<td><input name="method" type="submit" value="Modify"/></td>
+							<td><input id="email" name="email" 
+									   type="email" size="30" 
+									   maxlength="255"
+									   value="${user.email}"/></td>
+							<td><input id="password" name="password" 
+									   type="password" size="15" 
+									   maxlength="50"
+									   value="${user.password}"/></td>
+							<td><input id="name" name="name" 
+									   type="text" size="15" 
+									   maxlength="50"
+									   value="${user.name}"/></td>
+							<td><input id="age" name="age" 
+									   type="number" size="5" 
+									   maxlength="3" min="1" max="199"
+									   value="${user.age}"/></td>
+							<td><input name="method" type="submit" value="Update"/></td>
+							 <td><input name="method" type="submit" value="Delete"/></td>
 						</tr>
 					</table>
 				</form>        

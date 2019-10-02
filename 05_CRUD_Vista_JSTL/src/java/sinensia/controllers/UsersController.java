@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,6 +42,7 @@ public class UsersController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
             throws ServletException, IOException {        
         try {
+			
 			String id = req.getParameter("id");
             String email = req.getParameter("email");
             String password = req.getParameter("password");
@@ -48,12 +50,18 @@ public class UsersController extends HttpServlet {
             String age = req.getParameter("age");
 			
 			String method = req.getParameter("method");
+			
+			
 			if("Delete".equals(method)){
 				userSrv.remove(Integer.parseInt(id));
+			}else if("Update".equals(method)){	
+				User updUsr = userSrv.update(Integer.parseInt(id),email, password, name, age);
+				req.setAttribute("user", updUsr);
 			}else{
 				User newUser = userSrv.create(email, password, name, age);
 				req.setAttribute("user", newUser);
 			}
+			
 			
 			
         } catch (Exception ex) {
@@ -67,12 +75,33 @@ public class UsersController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-            List<User> listUsers = userSrv.getAll();
-            req.setAttribute("usersList", listUsers);
-            req.getRequestDispatcher("listUsers.jsp").forward(req, resp);
+			String email = req.getParameter("email");			
+			String password = req.getParameter("password");
+
+			if(email != null && password !=null){
+				User user = userSrv.getValidUser(email, password);
+				
+				if(user != null){
+					req.getSession().setAttribute("userLogged",user);
+					resp.addCookie(new Cookie("email", email));
+					req.getRequestDispatcher("result.jsp").forward(req, resp);	
+				}else{
+					throw new Exception("Error en email y password");
+				}
+			}else{
+				List<User> listUsers = userSrv.getAll();
+			
+				req.setAttribute("usersList", listUsers);
+				req.getRequestDispatcher("listUsers.jsp").forward(req, resp);
+			}
+			
+           
         } catch (Exception ex) {
-             Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Logger.getLogger(UsersController.class.getName()).log(Level.SEVERE, null, ex);
+			req.setAttribute("errorMessage", ex.getMessage());
+        }finally{
+			req.getRequestDispatcher("result.jsp").forward(req, resp);
+		}
     }    
     
 }
