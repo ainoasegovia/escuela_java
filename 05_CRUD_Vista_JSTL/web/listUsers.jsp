@@ -19,7 +19,7 @@
     <body>
         <h1>Users list</h1>
         <%-- ${} corresponde a EL (Expression Language) de JSTL --%>
-		<c:if test="${userLogged != null}">
+		<c:if test="${sessionScope.userLogged != null}">
             <c:forEach items="${usersList}" var="user">
 				<form action="users.do" method="post">
 					<table>
@@ -50,5 +50,15 @@
 				</form>        
             </c:forEach>
 		</c:if>
+		
+		<%-- <c:if test="${sessionScope.userLogged == null}"> --%>
+		<% if(session.getAttribute("userLogged") == null){ %>
+			You didn't logged
+			
+			<br/><br/>
+			
+			<a href="index.jsp">Home</a>
+		<% } %>
+		<%-- </c:if> --%>
     </body>
 </html>
