@@ -51,7 +51,8 @@
 			<h3 style="color: orange"> 
 				${requestScope.errorMessage}
 			</h3>
-				<c:remove var="errorMessage" scope="request"/>
+			
+			<c:remove var="errorMessage" scope="request"/>
 		</c:if>
     </body>
 </html>

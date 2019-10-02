@@ -19,6 +19,7 @@
     <body>
         <h1>Users list</h1>
         <%-- ${} corresponde a EL (Expression Language) de JSTL --%>
+		<c:if test="${userLogged != null}">
             <c:forEach items="${usersList}" var="user">
 				<form action="users.do" method="post">
 					<table>
@@ -48,5 +49,6 @@
 					</table>
 				</form>        
             </c:forEach>
+		</c:if>
     </body>
 </html>
