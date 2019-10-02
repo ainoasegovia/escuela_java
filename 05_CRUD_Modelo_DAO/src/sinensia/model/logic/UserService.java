@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.List;
 import sinensia.modelo.User;
 import sinensia.modelo.persistence.IUserDAO;
-import sinensia.modelo.persistence.UserDAO_DerbyDB;
 
 /**
  *

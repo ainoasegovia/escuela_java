@@ -45,7 +45,7 @@ public class UsersController extends HttpServlet {
 			
 			String id = req.getParameter("id");
             String email = req.getParameter("email");
-            String password = req.getParameter("password");
+			String passwordEncript = req.getParameter("password_encript");
             String name = req.getParameter("name");
             String age = req.getParameter("age");
 			
@@ -55,10 +55,10 @@ public class UsersController extends HttpServlet {
 			if("Delete".equals(method)){
 				userSrv.remove(Integer.parseInt(id));
 			}else if("Update".equals(method)){	
-				User updUsr = userSrv.update(Integer.parseInt(id),email, password, name, age);
+				User updUsr = userSrv.update(Integer.parseInt(id),email, passwordEncript, name, age);
 				req.setAttribute("user", updUsr);
 			}else{
-				User newUser = userSrv.create(email, password, name, age);
+				User newUser = userSrv.create(email, passwordEncript, name, age);
 				req.setAttribute("user", newUser);
 			}
 			
@@ -76,10 +76,10 @@ public class UsersController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
 			String email = req.getParameter("email");			
-			String password = req.getParameter("password");
+			String passwordEncript = req.getParameter("password_encript");
 
-			if(email != null && password !=null){
-				User user = userSrv.getValidUser(email, password);
+			if(email != null && passwordEncript != null){
+				User user = userSrv.getValidUser(email, passwordEncript);
 				
 				if(user != null){
 					req.getSession().setAttribute("userLogged",user);
