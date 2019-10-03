@@ -106,4 +106,11 @@ public class UsersRestController extends HttpServlet {
             Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+	}
+	
+	
 }
