@@ -1,9 +1,4 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <title>Cliente Rest con Ajax</title>
@@ -12,12 +7,28 @@ and open the template in the editor.
     </head>
     <body>
         <h1>Cliente Rest con Ajax</h1>
-		<form>
-			
-		</form>
+         <form name="form1" action="users.do" method="post">
+            <label for="id">Id: </label>
+            <input id="id" type="text" value=""/><br/>
+     
+            <label for="email">Email: </label>
+            <input id="email" type="email" value="ppp@ppp.es"/><br/>
+            
+            <label for="password">Password: </label>
+            <input id="password" type="password" value="ppp555"/><br/>
+            
+            <label for="name">Name: </label>
+            <input id="name" type="text" value="Papape"/><br/>
+            
+            <label for="age">Age: </label>
+            <input id="age" type="number" value="11"/><br/>
+            
+       </form>
+        <input id="btnSend" type="button" value="AJAX Register"/>
+   
         
-		<table id="data_table"></table>
-		
+        <table id="data_table"></table>
         <script src="js/ajaxRestClient.js"></script>
+        <script src="js/registerAjax.js"></script>
     </body>
 </html>

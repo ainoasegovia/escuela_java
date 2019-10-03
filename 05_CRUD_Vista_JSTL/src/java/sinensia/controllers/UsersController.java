@@ -42,14 +42,14 @@ public class UsersController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-			
             String id = req.getParameter("id");
             String email = req.getParameter("email");     
             String passwordEncript = req.getParameter("password_encript");
+      
             String name = req.getParameter("name");
             String age = req.getParameter("age");
+
             String method = req.getParameter("method");
-			
             if ("Delete".equals(method)) {
                 userSrv.remove(Integer.parseInt(id));
             } else if ("Update".equals(method)) {
@@ -72,10 +72,8 @@ public class UsersController extends HttpServlet {
         try {
             String email = req.getParameter("email");
             String passwordEncript = req.getParameter("password_encript");
-			
             if (email != null && passwordEncript != null) {
                 User user = userSrv.getValidUser(email, passwordEncript);
-				
                 if (user != null) {
                     req.getSession().setAttribute("userLogged", user);
                     resp.addCookie(new Cookie("email", email));
@@ -87,7 +85,6 @@ public class UsersController extends HttpServlet {
                     resp.addCookie(coEmail);
                     throw new Exception("Error en email y password");
                 }
-				
             } else {
                 List<User> listUsers = userSrv.getAll();
                 req.setAttribute("usersList", listUsers);

@@ -10,35 +10,24 @@
     </head>
     <body>
         <h1>Vista JSTL Operaciones CRUD</h1>
-		
         <ul>
             <li> <a href="register.jsp">Register</a> </li>
             <li> <a href="users.do">Users list</a> </li>
             <li> <a href="restClient.html">Rest Client with AJAX</a> </li>
         </ul>
-		
         <form id="formLogin" action="users.do" method="get">
 
             Email: <input id="email" name="email" 
                        type="email" size="30" 
                        maxlength="255"
-                       value="${cookie.email.value}"/>
-			
-			<br/>
-			
+                       value="${cookie.email.value}"/><br/>
             Password: <input id="password" name="password" 
                        type="password" size="15" 
                        maxlength="50"
-                       value=""/>
-			
-			<br/>
-			
-            <input name="method" type="submit" value="Login"/>  
-			
+                       value=""/><br/>
+            <input name="method" type="submit" value="Login"/>         
         </form>
-					   
         <script src='js/md5.min.js'></script>
         <script src='js/encrypt.js'></script>
-		
     </body>
 </html>

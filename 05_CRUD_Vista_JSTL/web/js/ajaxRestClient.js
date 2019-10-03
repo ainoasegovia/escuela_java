@@ -1,4 +1,4 @@
-window.onload = function() {
+window.addEventListener("load", function() {
   let data_table = document.getElementById("data_table")  ;
   // Que va en casi todos los navegadores excepto IE
   let ajaxObj = new XMLHttpRequest();
@@ -11,9 +11,7 @@ window.onload = function() {
           let jsonResp = this.responseText;
           // Convertir texto JSON en obj JS
           let objRespListUsers = JSON.parse(jsonResp);
-		  
           data_table.innerHTML = "";
-		  
           for (let user of objRespListUsers) {
               data_table.innerHTML += 
                 `<tr><td>${user.email}</td>
@@ -25,5 +23,4 @@ window.onload = function() {
   
   ajaxObj.open("GET", "api/users");
   ajaxObj.send();
-  
-};
+});
