@@ -36,7 +36,6 @@ public class UsersRestController extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-		
         super.init(); //To change body of generated methods, choose Tools | Templates.
 
         IUserDAO usersDAO = new UserDAO_DerbyDB();
@@ -45,21 +44,15 @@ public class UsersRestController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
         resp.setContentType("application/json;charset=UTF-8");
 
         try {
             List<User> usersList = userSrv.getAll();
-			
             // Serializamos el List en un JSON
-			
             Gson gson = new Gson();
             String textJson = gson.toJson(usersList);
-			
             // Devolverá [ {"id": 1, "email": "aaa@aaa.com"...},  ]
-			
             resp.getWriter().print(textJson);
-			
         } catch (Exception ex) {
             Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
             resp.getWriter().print("{\"error\": \""
@@ -70,47 +63,59 @@ public class UsersRestController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-		
-        // Recicir el JSON como parámetro de FORMulario
-		
+        //Recicir el JSON como parámetro de FORMulario
         //String jsonUser = req.getParameter("json");
-		
-        BufferedReader bufRead = req.getReader();        
+        BufferedReader bufRead = req.getReader();
         String jsonUser;
         jsonUser = bufRead.readLine();
-        /*String li;
-        while (jsonUser != null) {
+        /*String li
+         while (jsonUser != null) {
              jsonUser += bu
-        }*/
-		
+         }*/
         Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, jsonUser);
 
         User userObject = new Gson().fromJson(jsonUser, User.class);
-		
         try {
             userObject = userSrv.create(
                     userObject.getEmail(),
                     userObject.getPassword(),
                     userObject.getName(),
                     Integer.toString(userObject.getAge()));
-			
             resp.setContentType("application/json;charset=UTF-8");
-            
+
             Gson gson = new Gson();
-			
             String textJson = gson.toJson(userObject);
-			
             resp.getWriter().print(textJson);
-			
         } catch (SQLException ex) {
             Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-	@Override
-	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+			String jsonUser = req.getReader().readLine();
+			User userObject = new Gson().fromJson(jsonUser, User.class);
+            userSrv.remove(userObject.getId());
+			resp.getWriter().print("OK");
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+			resp.getWriter().print("ERROR: " + ex.getMessage());
 
-	}
-	
-	
+        }
+    }
+    
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String jsonUser = req.getReader().readLine();
+        User userObject = new Gson().fromJson(jsonUser, User.class);
+        try { // Debe venir ya con el id
+            userObject = userSrv.update(userObject);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        resp.setContentType("application/json;charset=UTF-8");
+        resp.getWriter().print(new Gson().toJson(userObject));
+    }
+
 }
