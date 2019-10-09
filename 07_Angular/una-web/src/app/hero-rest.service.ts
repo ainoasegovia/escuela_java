@@ -31,4 +31,10 @@ export class HeroRestService {
   add(newHero: Hero): Observable<Hero> {
    return this.httpCli.post<Hero>(this.urlApiRest, newHero, this.httpOptions );
   }
+  delete(newHero: Hero): Observable<Hero> {
+    this.httpOptions['body'] = {
+      id: newHero.id
+    }
+    return this.httpCli.post<Hero>(this.urlApiRest, newHero, this.httpOptions );
+   }
 }
