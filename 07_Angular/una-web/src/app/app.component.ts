@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Una web en Angular. DATA BINDING ';
+  title = 'Una web en angular. DATA-BINDING';
 }

@@ -9,12 +9,11 @@ import { Hero } from '../model/hero';
 export class MiControlComponent implements OnInit {
 
   static contIds: number = 0;
-
-  propiedadHola = 'Vamos comer ya!';
-
+  propiedadHola = 'Vamos a tomar unas cañas!';
   hero: Hero = {
     id: 1,
-    name: 'Iron Man'
+    name: 'Iron Man',
+    file: ''
   };
 
   constructor() {

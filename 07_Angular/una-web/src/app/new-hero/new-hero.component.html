@@ -1,0 +1,9 @@
+<h2>Create new Hero: </h2>
+<label for="id">Id:</label>
+<input id="id" type="number" [(ngModel)] = "newHero.id"/><br/>
+<label for="name">Name:</label>
+<input id="name" type="text" [(ngModel)] = "newHero.name"/><br/>
+<label for="file">Image src:</label>
+<input type="text" [(ngModel)] = "newHero.file"/><br/>
+<input type="button" value="Add new hero" 
+    (click)="createHero()"/>

@@ -8,42 +8,31 @@ class Animal {
         this.edad = edad;
         this.volador = volador;
     }
-
     stringfy(): string {
         return "Animal " + this.especie + " con " + this.edad + " años";
     }
-
     mostrar(): void {
         console.log(this.stringfy());
     }
 }
-
-let perro: Animal = new Animal("Perro", 2, false);
-
-perro.especie = "Perro cariñoso";
+let perro: Animal = new Animal("Perro", 7, false);
+perro.especie = "Perro rabioso";
 perro.mostrar();
 
 class Mamifero extends Animal {
     private mamas: number;
     static contador: number;
-
     static total() {
         return this.contador;
     }
-
     public constructor(especie: string, edad: number, volador: boolean, mamas: number) {
         super(especie, edad, volador);
         this.mamas = mamas;
         Mamifero.contador++;
     }
-
-    getMamas() {
-        return this.mamas;
-    }
+    getMamas() { return this.mamas; }
 }
-
-let unGato = new Mamifero("Gato", 5, false, 4);
-
+let unGato = new Mamifero("Gato", 3, false, 4);
 console.log("Variable privada " + unGato.getMamas());
 Mamifero.total();
 
@@ -52,6 +41,7 @@ class Pajaro extends Animal {
         super("Pajaro", edad, true);
     }
 }
-
-let avestruz: Pajaro = new Pajaro(2, 3, 6);
+let avestruz: Pajaro = new Pajaro(2, 1, 8);
 avestruz.mostrar();
+// MAS EN...
+//https://github.com/germanux/cursomeanstack/tree/master/12_TypeScript

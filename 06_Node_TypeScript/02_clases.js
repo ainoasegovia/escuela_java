@@ -25,37 +25,17 @@ var Animal = /** @class */ (function () {
     };
     return Animal;
 }());
-var perro = new Animal("Perro", 2, false);
-perro.especie = "Perro cariñoso";
+var perro = new Animal("Perro", 7, false);
+perro.especie = "Perro rabioso";
 perro.mostrar();
 var Mamifero = /** @class */ (function (_super) {
     __extends(Mamifero, _super);
     function Mamifero(especie, edad, volador, mamas) {
         var _this = _super.call(this, especie, edad, volador) || this;
         _this.mamas = mamas;
-        Mamifero.contador++;
         return _this;
     }
-    Mamifero.total = function () {
-        return this.contador;
-    };
-    Mamifero.prototype.getMamas = function () {
-        return this.mamas;
-    };
     return Mamifero;
 }(Animal));
-var unGato = new Mamifero("Gato", 5, false, 4);
-console.log("Variable privada " + unGato.getMamas());
-Mamifero.total();
-var Pajaro = /** @class */ (function (_super) {
-    __extends(Pajaro, _super);
-    function Pajaro(numAlas, huevos, edad) {
-        var _this = _super.call(this, "Pajaro", edad, true) || this;
-        _this.numAlas = numAlas;
-        _this.huevos = huevos;
-        return _this;
-    }
-    return Pajaro;
-}(Animal));
-var avestruz = new Pajaro(2, 3, 6);
-avestruz.mostrar();
+var unGato = new Mamifero("Gato", 3, false, 4);
+console.log("Variable privada " + unGato.mamas);

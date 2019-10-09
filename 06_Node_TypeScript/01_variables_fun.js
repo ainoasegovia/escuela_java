@@ -1,9 +1,9 @@
-//'usestrict';
-// Ultimo codigo JS
+// 'usestrict';
+// Ultimo código JS
 var hola = "Hola";
 console.log("Guay " + hola);
 function otroHola(saludo) {
-    console.log("Guay " + saludo);
+    console.log("saludo " + saludo);
 }
 otroHola(" adios JS!");
 // Type Script:
@@ -17,12 +17,11 @@ var miUnion;
 miUnion = true;
 miUnion = "....";
 ;
-var miCumple = { dia: 18, mes: 6, anio: 1995 };
-console.log("Mi cumple es el dia " + miCumple.dia + " del mes " + miCumple.mes + " del año " + miCumple.anio);
+var miCumple = { dia: 7, mes: 10, anio: 1982 };
+console.log("Cumple el " + miCumple.dia + " del " + miCumple.mes);
 // any: tipo que dice que puede ser de cualquier tipo, un buen tipo
 function concatenar(texto1, texto2) {
-    console.log("Concatenando: " + texto1 + texto2);
+    console.log("Concatenado: " + texto1 + texto2);
 }
 concatenar("Total, ", "que recibe una cosa");
 concatenar("u otra, ", miCumple);
-//concatenar("u otra", 200);
