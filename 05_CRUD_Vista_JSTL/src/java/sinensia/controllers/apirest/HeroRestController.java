@@ -9,8 +9,10 @@ import com.google.gson.Gson;
 import java.io.BufferedReader;
 import sinensia.controllers.*;
 import java.io.IOException;
+import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,32 +31,69 @@ import sinensia.modelo.persistence.UserDAO_DerbyDB;
  *
  * @author alumno
  */
-@WebServlet(asyncSupported = true, urlPatterns = "/api/users")
-public class UsersRestController extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = "/api/heroes")
+public class HeroRestController extends HttpServlet {
 
-    UserService userSrv;
+    public class Hero implements Serializable {
+        
+        private int id;
+        private String name;
+        private String file;
+        
+        public Hero() {}
+
+        public Hero(int id, String name, String file) {
+            this.id = id;
+            this.name = name;
+            this.file = file;
+        }       
+
+        public String getFile() {
+            return file;
+        }
+
+        public void setFile(String file) {
+            this.file = file;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+    }
+    
+    ArrayList<Hero> listaHeroes;
 
     @Override
     public void init() throws ServletException {
         super.init(); //To change body of generated methods, choose Tools | Templates.
-
-        IUserDAO usersDAO = new UserDAO_DerbyDB();
-        this.userSrv = new UserService(usersDAO);
+        listaHeroes = new ArrayList<>();
+        listaHeroes.add(new Hero(1, "Spider Man", "../sp.jpg"));
+        listaHeroes.add(new Hero(2, "Super Man", "../spm.jpg"));
+        listaHeroes.add(new Hero(3, "Batman", "../bt.jpg"));
     }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json;charset=UTF-8");
-
+        setAccessControlHeaders(resp);
         try {
-            List<User> usersList = userSrv.getAll();
-            // Serializamos el List en un JSON
             Gson gson = new Gson();
-            String textJson = gson.toJson(usersList);
-            // Devolverá [ {"id": 1, "email": "aaa@aaa.com"...},  ]
+            String textJson = gson.toJson(listaHeroes);
             resp.getWriter().print(textJson);
         } catch (Exception ex) {
-            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HeroRestController.class.getName()).log(Level.SEVERE, null, ex);
             resp.getWriter().print("{\"error\": \""
                     + ex.getMessage() + "\"}");
         }
@@ -63,34 +102,29 @@ public class UsersRestController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        //Recicir el JSON como parámetro de FORMulario
-        //String jsonUser = req.getParameter("json");
+        
         BufferedReader bufRead = req.getReader();
         String jsonUser;
         jsonUser = bufRead.readLine();
-        /*String li
-         while (jsonUser != null) {
-             jsonUser += bu
-         }*/
-        Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, jsonUser);
+        
+        Logger.getLogger(HeroRestController.class.getName()).log(Level.SEVERE, null, jsonUser);
 
-        User userObject = new Gson().fromJson(jsonUser, User.class);
+        Hero heroObject = new Gson().fromJson(jsonUser, Hero.class);
         try {
-            userObject = userSrv.create(
-                    userObject.getEmail(),
-                    userObject.getPassword(),
-                    userObject.getName(),
-                    Integer.toString(userObject.getAge()));
+            listaHeroes.add(heroObject);
             resp.setContentType("application/json;charset=UTF-8");
-
+            setAccessControlHeaders(resp);
+            
             Gson gson = new Gson();
-            String textJson = gson.toJson(userObject);
+            String textJson = gson.toJson(heroObject);
             resp.getWriter().print(textJson);
-        } catch (SQLException ex) {
-            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(HeroRestController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    
+/*
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
@@ -99,7 +133,7 @@ public class UsersRestController extends HttpServlet {
            userSrv.remove(userObject.getId());
             resp.getWriter().print("OK");
         } catch (SQLException ex) {
-            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HeroRestController.class.getName()).log(Level.SEVERE, null, ex);
   
             resp.getWriter().print("ERROR: " + ex.getMessage());
         }
@@ -112,10 +146,28 @@ public class UsersRestController extends HttpServlet {
         try { // Debe venir ya con el id
             userObject = userSrv.update(userObject);
         } catch (SQLException ex) {
-            Logger.getLogger(UsersRestController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(HeroRestController.class.getName()).log(Level.SEVERE, null, ex);
         }
         resp.setContentType("application/json;charset=UTF-8");
         resp.getWriter().print(new Gson().toJson(userObject));
     }
+*/
+    
+    @Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        setAccessControlHeaders(resp);
+        resp.setStatus(HttpServletResponse.SC_OK); // Devolvemos cod 200 = OK
+    }
 
+    private void setAccessControlHeaders(HttpServletResponse resp) {
+        resp.setHeader("Access-Control-Allow-Origin",
+                "http://localhost:4200");
+        
+        resp.setHeader("Access-Control-Allow-Methods",
+                "OPTIONS,HEAD,GET,POST,PUT,DELETE");
+        
+        resp.setHeader("Access-Control-Allow-Headers",
+                "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept"); 
+        resp.addHeader("Access-Control-Max-Age", "1728000"); // 20 días
+    }
 }
