@@ -1,0 +1,48 @@
+{
+	"info": {
+		"_postman_id": "416a8afb-7246-40d0-8c2d-37049a4ec63e",
+		"name": "AJAX Register",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AJAX Resgister JSON",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8084/CRUD_Vista_JSTL/api/users?json={\"email\":\"oo@ppp\",\"password\":\"o7\",\"name\":\"Ooooo\",\"age\":\"55\"}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8084",
+					"path": [
+						"CRUD_Vista_JSTL",
+						"api",
+						"users"
+					],
+					"query": [
+						{
+							"key": "json",
+							"value": "{\"email\":\"oo@ppp\",\"password\":\"o7\",\"name\":\"Ooooo\",\"age\":\"55\"}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener usuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
