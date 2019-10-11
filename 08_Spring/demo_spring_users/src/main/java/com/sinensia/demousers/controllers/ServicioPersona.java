@@ -10,7 +10,6 @@ import java.util.ArrayList;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sinensia.demousers.model.Persona;
@@ -26,11 +25,7 @@ public class ServicioPersona {
 
 	private ArrayList<Persona> personas;
 
-	@RequestMapping(method = RequestMethod.POST)
-	public Persona addPersonas(
-			@RequestParam(value = "nombre") String nombre, 
-			@RequestParam(value = "edad",
-							defaultValue = "1") String edad) //Recoger valores por defecto
+	public Persona addPersonas(String nombre, String edad)
 			throws NumberFormatException, IOException, IllegalArgumentException {
 
 		if (nombre.equals("")) {
@@ -63,6 +58,7 @@ public class ServicioPersona {
 	}
 
 	public Persona getPersona(String nombre) {
+
 		for (Persona p : personas) {
 			if (p.getNombre().equalsIgnoreCase(nombre)) {
 				return p;
